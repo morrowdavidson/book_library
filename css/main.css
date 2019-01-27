@@ -1,0 +1,14 @@
+.hidden {
+    display: none;
+}
+
+#addBookForm {
+    padding:25px;
+    padding-bottom: 0px;
+    position: absolute;
+    z-index: 100;
+    background: rgba(76, 175, 80, 0.98);
+    top: 0px;
+    margin-top:25%;
+
+}
