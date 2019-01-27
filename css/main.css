@@ -1,3 +1,9 @@
+body{
+    padding:50px;
+}
+table{
+    width: 100%;
+}
 .hidden {
     display: none;
 }
@@ -9,6 +15,6 @@
     z-index: 100;
     background: rgba(76, 175, 80, 0.98);
     top: 0px;
-    margin-top:25%;
+    margin-top:50px;
 
 }

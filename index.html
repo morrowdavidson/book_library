@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -36,9 +37,8 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-    <div class="row">
-      <div class="one-half column" style="margin-top: 25%">
+  
+
         <h1>My Library</h1>
         <table id="myLibraryTable">
           <tr>
@@ -46,29 +46,28 @@
             <th>Author</th>
             <th># of Pages</th>
             <th>Read</th>
+            <th></th>
         </table>
         <button id="addBookButton">Add Book</button>
         
-        <div id ="addBookForm" class="hidden"> 
+        <form id ="addBookForm" class="hidden"> 
           <h1>Add Book</h1>
 
-          <form>
-            Title: <br>
-            <input type="text" name="book_title"></br>
-            Author: <br>
-            <input type="text" name="book_author"></br>
-            # of Pages: <br>
-            <input type="text" name="book_pages"></br>
-            Read: <br>
-            <input type="checkbox" name="book_read"> Yes
-            <input id="addBookFormButton" type="button" value="Add Book">
-            <input id="cancelFormButton" type="button" value="Cancel">
-          </form>
-        </div>
+          Title: <br>
+          <input type="text" name="book_title"></br>
+          Author: <br>
+          <input type="text" name="book_author"></br>
+          # of Pages: <br>
+          <input type="text" name="book_pages"></br>
+          Read: <br>
+          <input type="checkbox" name="book_read"> Yes
+          <input id="addBookFormButton" type="button" value="Add Book">
+          <input id="cancelFormButton" type="button" value="Cancel">
+        </form>
+
       
-      </div>
-    </div>
-  </div>
+
+  
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

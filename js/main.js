@@ -5,7 +5,10 @@ let addBookFormButton = document.querySelector('#addBookFormButton');
 let cancelFormButton = document.querySelector('#cancelFormButton');
 
 addBookButton.onclick = function() {addBookForm.classList.remove("hidden")};
-cancelFormButton.onclick = function() {addBookForm.classList.add("hidden")};
+cancelFormButton.onclick = function() {
+    addBookForm.classList.add("hidden")
+    addBookForm.reset();
+};
 addBookFormButton.onclick = function() {
     let title = document.querySelector("input[name='book_title']").value;
     let author = document.querySelector("input[name='book_author']").value;
@@ -14,7 +17,9 @@ addBookFormButton.onclick = function() {
 
     addBookToLibrary(title,author,num_of_pages,read);
 
-    addBookForm.classList.add("hidden")
+    addBookForm.classList.add("hidden");
+
+    addBookForm.reset();
 };
 
 
@@ -26,11 +31,11 @@ function Book(title,author,num_of_pages,read){
 }
 
 Book.prototype.readTxt = function (){
-    let read_txt = "NO";
+    let read_html = "<input type='checkbox'>";
     if (this.read){
-        read_txt = "YES";
+        read_html = "<input type='checkbox' checked='true'>";
     }
-    return read_txt;
+    return read_html;
 }
 
 Book.prototype.info = function(){
@@ -38,11 +43,14 @@ Book.prototype.info = function(){
 }
 
 Book.prototype.tdBookTemplate = function(bookIndex){
+    let deleteIcon = "<button onclick='bookDelete(" + bookIndex + ")' data-attribute=" + bookIndex + "class='btn'><i class='fa fa-trash'></i></button>" 
+    
     let template = "<tr data-attribute=" + bookIndex + ">" +
                     "<td>" + this.title + "</td>" +
                     "<td>" + this.author + "</td>" +
                     "<td>" + this.pages + "</td>" +
                     "<td>" + this.readTxt() + "</td>" +
+                    "<td>" + deleteIcon + "</td>"
                     "</tr>";
     return template;
 }
@@ -60,6 +68,12 @@ function addBookToLibrary(title,author,num_of_pages,read) {
 function renderBook(template, node){
     if (!node) return;
     node.innerHTML += template;
+}
+
+function bookDelete(bookIndex){
+    delete myLibrary[bookIndex];
+    let bookToDelete = document.querySelector("tr[data-attribute='"+bookIndex+"']");
+    bookToDelete.classList.add("hidden");
 }
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
