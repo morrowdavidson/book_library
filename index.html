@@ -21,6 +21,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/main.css">
 
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -45,8 +46,26 @@
             <th>Author</th>
             <th># of Pages</th>
             <th>Read</th>
-
         </table>
+        <button id="addBookButton">Add Book</button>
+        
+        <div id ="addBookForm" class="hidden"> 
+          <h1>Add Book</h1>
+
+          <form>
+            Title: <br>
+            <input type="text" name="book_title"></br>
+            Author: <br>
+            <input type="text" name="book_author"></br>
+            # of Pages: <br>
+            <input type="text" name="book_pages"></br>
+            Read: <br>
+            <input type="checkbox" name="book_read"> Yes
+            <input id="addBookFormButton" type="button" value="Add Book">
+            <input id="cancelFormButton" type="button" value="Cancel">
+          </form>
+        </div>
+      
       </div>
     </div>
   </div>
