@@ -22,45 +22,44 @@ addBookFormButton.onclick = function() {
     addBookForm.reset();
 };
 
-
-function Book(title,author,num_of_pages,read){    
-    this.title = title;
-    this.author = author;
-    this.pages = num_of_pages;
-    this.read = read;
-}
-
-Book.prototype.readTxt = function (){
-    let read_html = "<input type='checkbox'>";
-    if (this.read){
-        read_html = "<input type='checkbox' checked='true'>";
+class Book {
+    constructor(title,author,num_of_pages,read){
+        this.title = title;
+        this.author = author;
+        this.pages = num_of_pages;
+        this.read = read;
     }
-    return read_html;
-}
-
-Book.prototype.info = function(){
-    return this.title + " by " + this.author + ", " + this.num_of_pages + " pages, " + this.readTxt();  
-}
-
-Book.prototype.tdBookTemplate = function(bookIndex){
-    let deleteIcon = "<button onclick='bookDelete(" + bookIndex + ")' data-attribute=" + bookIndex + "class='btn'><i class='fa fa-trash'></i></button>" 
     
-    let template = "<tr data-attribute=" + bookIndex + ">" +
-                    "<td>" + this.title + "</td>" +
-                    "<td>" + this.author + "</td>" +
-                    "<td>" + this.pages + "</td>" +
-                    "<td>" + this.readTxt() + "</td>" +
-                    "<td>" + deleteIcon + "</td>"
-                    "</tr>";
-    return template;
+    readText() {
+        let read_html = "<input type='checkbox'>";
+        if (this.read){
+            read_html = "<input type='checkbox' checked='true'>";
+        }
+        return read_html;
+    }
+
+    tdBookTemplate(bookIndex, newBook) {
+        let deleteIcon = "<button onclick='bookDelete(" + bookIndex + ")' data-attribute=" + bookIndex + "class='btn'><i class='fa fa-trash'></i></button>" 
+    
+        let template = "<tr data-attribute=" + bookIndex + ">" +
+                        "<td>" + this.title + "</td>" +
+                        "<td>" + this.author + "</td>" +
+                        "<td>" + this.pages + "</td>" +
+                        "<td>" + this.readText() + "</td>" +
+                        "<td>" + deleteIcon + "</td>"
+                        "</tr>";
+        return template;
+    }
+    
 }
+
 
 function addBookToLibrary(title,author,num_of_pages,read) {
     let newBook = new Book(title,author,num_of_pages,read);
     myLibrary.push(newBook);
 
     let bookIndex = myLibrary.length - 1;
-    renderBook(newBook.tdBookTemplate(bookIndex), document.querySelector('#myLibraryTable'));
+    renderBook(newBook.tdBookTemplate(bookIndex, newBook), document.querySelector('#myLibraryTable'));
 
     return myLibrary;
 }
