@@ -38,7 +38,7 @@ class Book {
         return read_html;
     }
 
-    tdBookTemplate(bookIndex, newBook) {
+    tdBookTemplate(bookIndex) {
         let deleteIcon = "<button onclick='bookDelete(" + bookIndex + ")' data-attribute=" + bookIndex + "class='btn'><i class='fa fa-trash'></i></button>" 
     
         let template = "<tr data-attribute=" + bookIndex + ">" +
@@ -53,13 +53,12 @@ class Book {
     
 }
 
-
 function addBookToLibrary(title,author,num_of_pages,read) {
     let newBook = new Book(title,author,num_of_pages,read);
     myLibrary.push(newBook);
 
     let bookIndex = myLibrary.length - 1;
-    renderBook(newBook.tdBookTemplate(bookIndex, newBook), document.querySelector('#myLibraryTable'));
+    renderBook(newBook.tdBookTemplate(bookIndex), document.querySelector('#myLibraryTable'));
 
     return myLibrary;
 }
